@@ -25,6 +25,7 @@ def entities_generator(points, with_z, p_l, t_l, t_h):
             generated += str(point.generate_without_z(p_l, t_l, t_h))
     return generated
 
+
 path = "punkty.txt"
 points_list = []
 for point in importer(path):
