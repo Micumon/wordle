@@ -6,10 +6,16 @@ def importer(path):
         imported_points = f.readlines()
     points = []
     for line in imported_points:
-        line = line.rstrip()
-        line = line.replace("\t", " ")
-        line = line.replace(",", ".")
-        points.append(line.split(" "))
+        if len(line) < 3:
+            continue
+        else:
+            line = line.replace("\t", " ")
+            line = line.rstrip()
+            line = line.lstrip()
+            line = line.replace(",", ".")
+            while line.find("  ") != -1:
+                line = line.replace("  ", " ")
+            points.append(line.split(" "))
     for point in points:
         if len(point) == 3:
             point.append("0.00")
@@ -44,5 +50,6 @@ def filer(path, path_out):
                                                               text_height)+"0\nENDSEC\n"
     eof = "0\nEOF"
     out = header+tables+layer_obj+layer_text+entities+eof
+    print(out)
     with open(path_out, "w") as f:
         f.write(out)
