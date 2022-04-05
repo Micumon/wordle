@@ -33,14 +33,11 @@ def entities_generator(points, with_z, p_l, t_l, t_h):
     return generated
 
 
-def filer(path, path_out):
+def filer(path, path_out, points_layer, text_layer, text_height, with_z_ask):
     points_list = []
     for point in importer(path):
         points_list.append(Point(point))
-    with_z_ask = True
-    points_layer = "0_pomiar"
-    text_layer = "0_pomiar_pikiety"
-    text_height = "0.2"
+    text_height = text_height.replace(",", ".")
     header = "0\nSECTION\n2\nHEADER\n0\nENDSEC\n"
     tables = "0\nSECTION\n2\nTABLES\n0\nTABLE\n2\nLAYER\n70\n0\n0\nLAYER\n2\n0\n70\n0\n62\n7\n6\nCONTINUOUS\n0\n" \
              "ENDTAB\n0\nENDSEC\n"
