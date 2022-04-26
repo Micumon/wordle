@@ -22,6 +22,8 @@ class Txt2dxf:
         self.text_h_var = StringVar()
         self.text_h_var.set("0.2")
         self.with_z_var = BooleanVar()
+        self.drop_var = StringVar()
+        self.drop_var.set("Upuść tutaj")
 
         self.text_field = Text(mframe, state="disabled")
         self.text_field.grid(column=1, columnspan=8, row=1, sticky=(W, S, E, N))
@@ -60,6 +62,11 @@ class Txt2dxf:
                                                                               self.text_h_var.get(),
                                                                               str(self.with_z_var.get())))
         button_gen.grid(row=7, column=6, sticky=E)
+
+        drop_frame = ttk.Labelframe(mframe, text="Przeciągnij tutaj plik ze współrzędnymi.")
+        drop_frame.grid(row=8, column=1, columnspan=8, sticky=(W, S, E, N))
+        drop = ttk.Label(drop_frame, textvariable=self.drop_var, justify="center")
+        drop.grid(sticky=(W, S, E, N), ipady=100, padx=250)
 
     def ask_path(self):
         self.path_in = filedialog.askopenfilename()
