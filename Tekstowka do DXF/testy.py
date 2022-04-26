@@ -43,3 +43,7 @@ label_2.pack(fill="both", expand=True, padx=10, pady=10)
 
 
 root.mainloop()
+
+
+#"0\nENDTAB\n0\nENDSEC\n"
+#0\nENDTAB\n0\nENDSEC\n

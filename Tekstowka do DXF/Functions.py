@@ -39,10 +39,10 @@ def filer(path, path_out, points_layer, text_layer, text_height, with_z_ask):
         points_list.append(Point(point))
     text_height = text_height.replace(",", ".")
     header = "0\nSECTION\n2\nHEADER\n0\nENDSEC\n"
-    tables = "0\nSECTION\n2\nTABLES\n0\nTABLE\n2\nLAYER\n70\n0\n0\nLAYER\n2\n0\n70\n0\n62\n7\n6\nCONTINUOUS\n0\n" \
-             "ENDTAB\n0\nENDSEC\n"
-    layer_obj = "0\nLAYER\n2\n" + str(points_layer) + "\n70\n0\n62\n7\n6\nCONTINUOUS\n0\nENDTAB\n0\nENDSEC\n"
-    layer_text = "0\nLAYER\n2\n" + str(text_layer) + "\n70\n0\n62\n7\n6\nCONTINUOUS\n0\nENDTAB\n0\nENDSEC\n"
+    tables = "0\nSECTION\n2\nTABLES\n0\nTABLE\n2\nLAYER\n70\n0\n0\nLAYER\n2\n0\n70\n0\n62\n7\n6\nCONTINUOUS\n"
+    layer_obj = "0\nLAYER\n2\n" + str(points_layer) + "\n70\n0\n62\n2\n6\nCONTINUOUS\n370\n30\n390\nF\n347\n24\n"
+    layer_text = "0\nLAYER\n2\n" + str(text_layer) + "\n70\n0\n62\n2\n6\nCONTINUOUS\n370\n30\n390\nF\n347\n24\n" \
+                                                     "0\nENDTAB\n0\nENDSEC\n"
     entities = "0\nSECTION\n2\nENTITIES\n"+entities_generator(points_list, with_z_ask, points_layer, text_layer,
                                                               text_height)+"0\nENDSEC\n"
     eof = "0\nEOF"
