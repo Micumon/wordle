@@ -22,15 +22,17 @@ class Cake:
             self.__text = ""
         Cake.bakery_offer.append(self)
 
-    def __get_text(self):
+    @property
+    def Text(self):
         return self.__text
 
-    def __set_text(self, new_text):
+    @Text.setter
+    def Text(self, new_text):
         if self.kind == "cake":
             self.__text = new_text
         else:
             print(f"{self.name} is not cake!")
-    Text = property(__get_text, __set_text)
+
     def show_info(self):
         print(self.name.upper())
         print(f"Type: {self.kind}")
