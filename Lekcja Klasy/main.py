@@ -45,6 +45,7 @@ cake04 = Cake('Cocoa waffle','waffle','cocoa',[],'cocoa')
 for position in Cake.bakery_offer:
     position.show_info()
 
+
 print(isinstance(cake04,Cake))
 print(type(cake04))
 print(vars(cake04))
