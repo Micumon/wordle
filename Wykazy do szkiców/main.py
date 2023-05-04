@@ -9,22 +9,17 @@ def find_in_list(lista, obja):
             return int(i)
 
 
-class Points:
-    def __init__(self, path_coord):
+class PointsList:
+    def __init__(self, path_coord, points=None):
         self.number = []
         self.X = []
         self.Y = []
         self.H = []
         self.i = 0
-        with open(path_coord) as file:
-            for line in file:
-                if len(line) > 1:
-                    list_line = line.split(" ")
-                    self.number.append(list_line[0].rstrip())
-                    self.X.append(list_line[1].rstrip())
-                    self.Y.append(list_line[2].rstrip())
-                    if len(list_line) == 4:
-                        self.H.append(list_line[3].rstrip())
+        if points is None:
+            self.__builder_with_coords(path_coord)
+        else:
+            self.__builder_without_coords(path_coord, points)
 
     def __str__(self):
         print_str = ""
@@ -51,14 +46,21 @@ class Points:
     def __contains__(self, item):
         return False
 
+    def __len__(self):
+        return len(self.number)
 
-class ListPoints(Points):
-    def __init__(self, path, points):
-        self.number = []
-        self.X = []
-        self.Y = []
-        self.H = []
-        self.i = 0
+    def __builder_with_coords(self, path_coord):
+        with open(path_coord) as file:
+            for line in file:
+                if len(line) > 1:
+                    list_line = line.split(" ")
+                    self.number.append(list_line[0].rstrip())
+                    self.X.append(list_line[1].rstrip())
+                    self.Y.append(list_line[2].rstrip())
+                    if len(list_line) == 4:
+                        self.H.append(list_line[3].rstrip())
+
+    def __builder_without_coords(self, path, points):
         with open(path, "r") as file:
             numbers = file.read().split(" ")
         for number in numbers:
@@ -71,14 +73,9 @@ class ListPoints(Points):
                     self.H.append(points.H[i])
 
 
-points = Points(path_coord)
-list_points = ListPoints(path_list, points)
+points = PointsList(path_coord)
+#list_points = PointsList(path_list, points)
 """
 with open(path_result, "w") as file:
     file.write(str(list_points))
    """
-for i in points:
-    print(i)
-
-for i in points:
-    print(i)
