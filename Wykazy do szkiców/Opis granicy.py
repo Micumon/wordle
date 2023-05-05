@@ -72,7 +72,11 @@ def desc_writer(points):
         elif direction(azimuth_calc(float(points.X[i]), float(points.Y[i]), float(points.X[i + 1]),
                                     float(points.Y[i + 1]))) == direct and same_dir_times == 0:
             same_dir_times += 1
-            result += f" przez punkt {points.number[i]}"
+            if direction(azimuth_calc(float(points.X[i + 1]), float(points.Y[i + 1]), float(points.X[i + 2]),
+                                      float(points.Y[i + 2]))) == direct:
+                result += f" przez punkty {points.number[i]}"
+            else:
+                result += f" przez punkt {points.number[i]}"
         elif direction(azimuth_calc(float(points.X[i]), float(points.Y[i]), float(points.X[i + 1]),
                                     float(points.Y[i + 1]))) == direct and same_dir_times > 0:
             result += f", {points.number[i]}"
