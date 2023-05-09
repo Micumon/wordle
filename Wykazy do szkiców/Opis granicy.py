@@ -1,4 +1,4 @@
-import main
+from Surveyor import *
 import math
 
 
@@ -127,9 +127,8 @@ def azimuth_calc(Xp, Yp, Xk, Yk):
 change_dir_gen = ChangeDirGen()
 travel_gen = TravelGen()
 next_point = NextPointGen()
-azimuth_calc(100, 100, 101, 210)
 plot = "156/6"
-description = f"""Granica działki {plot} {next(travel_gen)} od punktu {desc_writer(main.points)}"""
+description = f"""Granica działki {plot} {next(travel_gen)} od punktu {desc_writer(points)}"""
 
 with open("C:\\Users\\admin\\Desktop\\proba\\opis.txt", "w") as file:
     file.write(description)
