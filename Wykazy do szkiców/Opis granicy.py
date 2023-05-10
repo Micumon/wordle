@@ -116,14 +116,15 @@ def azimuth_calc(Xp, Yp, Xk, Yk):
     azimuth = math.atan(dY / dX) * 200 / math.pi
     if dX >= 0 and dY >= 0:
         return azimuth
-    elif dX > 0 > dY:
+    elif dX < 0 < dY:
         return 200 + azimuth
     elif dX < 0 and dY < 0:
         return 200 + azimuth
-    elif dX < 0 < dY:
+    elif dX > 0 > dY:
         return 400 + azimuth
 
 
+a = azimuth_calc(5735264.37, 6605212.85, 5735254.12, 6605214.97)
 change_dir_gen = ChangeDirGen()
 travel_gen = TravelGen()
 next_point = NextPointGen()
