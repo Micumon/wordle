@@ -13,7 +13,7 @@ class Point:
 
 
 path_list = "Z:\\$$01_Winkalk\\@Winkalk 2023\\080_2023 Piłsudskiego 141\\szkic 1.txt"
-path_coord = "Z:\\$$01_Winkalk\\@Winkalk 2023\\088_2023 Dostawcza\\Dostawcza.txt"
+path_coord = "Z:\\$$01_Winkalk\\@Winkalk 2023\\087_2023 Dostawcza 5\\Dostawcza 5.txt"
 path_result = "Z:\\$$01_Winkalk\\@Winkalk 2023\\080_2023 Piłsudskiego 141\\wsad 1"
 
 
@@ -23,6 +23,11 @@ class PointsList:
         for i in range(len(lista)):
             if lista[i] == item:
                 return int(i)
+
+    @staticmethod
+    def __line_parser(text):
+        text = text.strip().replace("\t", " ").replace(",", ".").replace("  ", " ").replace("  ", " ").replace("  ", " ")
+        return text
 
     def __init__(self, path_coord, points=None):
         self.number = []
@@ -37,11 +42,11 @@ class PointsList:
 
     def __str__(self):
         print_str = ""
-        if len(self.H) == 0:
-            for i in range(len(self.number)):
+        if self.H is None:
+            for i in range(len(self)):
                 print_str += f"{self.number[i]} {self.X[i]} {self.Y[i]}\n"
         else:
-            for i in range(len(self.number)):
+            for i in range(len(self)):
                 print_str += f"{self.number[i]} {self.X[i]} {self.Y[i]} {self.H[i]}\n"
         return print_str
 
@@ -58,7 +63,10 @@ class PointsList:
         return self
 
     def __contains__(self, item):
-        return False
+        if self[item] is not None:
+            return True
+        else:
+            return False
 
     def __len__(self):
         return len(self.number)
@@ -77,24 +85,32 @@ class PointsList:
         with open(path_coord) as file:
             for line in file:
                 if len(line) > 1:
-                    list_line = line.split(" ")
+                    list_line = self.__line_parser(line).split(" ")
                     self.number.append(list_line[0].rstrip())
                     self.X.append(list_line[1].rstrip())
                     self.Y.append(list_line[2].rstrip())
                     if len(list_line) == 4:
                         self.H.append(list_line[3].rstrip())
+        if self.H:
+            pass
+        else:
+            self.H = None
 
     def __builder_without_coords(self, path, points):
         with open(path, "r") as file:
             numbers = file.read().split(" ")
+            numbers = ["30", "42"]
         for number in numbers:
             if len(number) > 0:
-                self.number.append(number.rstrip())
-                i = self.__find_in_list(points.number, number.rstrip())
-                self.X.append(points.X[i])
-                self.Y.append(points.Y[i])
-                if len(points.H) >= 1:
-                    self.H.append(points.H[i])
+                self.number.append(number)
+                self.X.append(points[number.strip()][0])
+                self.Y.append(points[number.strip()][1])
+                if points.H is not None:
+                    self.H.append(points[number.strip()][2])
+        if self.H:
+            pass
+        else:
+            self.H = None
 
 
 points = PointsList(path_coord)

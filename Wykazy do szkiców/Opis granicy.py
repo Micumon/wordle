@@ -124,7 +124,6 @@ def azimuth_calc(Xp, Yp, Xk, Yk):
         return 400 + azimuth
 
 
-a = azimuth_calc(5735264.37, 6605212.85, 5735254.12, 6605214.97)
 change_dir_gen = ChangeDirGen()
 travel_gen = TravelGen()
 next_point = NextPointGen()
