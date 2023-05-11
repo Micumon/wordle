@@ -99,7 +99,6 @@ class PointsList:
     def __builder_without_coords(self, path, points):
         with open(path, "r") as file:
             numbers = file.read().split(" ")
-            numbers = ["30", "42"]
         for number in numbers:
             if len(number) > 0:
                 self.number.append(number)
