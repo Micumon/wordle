@@ -13,7 +13,7 @@ class Point:
 
 
 path_list = "Z:\\$$01_Winkalk\\@Winkalk 2023\\080_2023 Piłsudskiego 141\\szkic 1.txt"
-path_coord = "Z:\\$$01_Winkalk\\@Winkalk 2023\\087_2023 Dostawcza 5\\Dostawcza 5.txt"
+path_coord = "C:\\Users\\admin\\Desktop\\Opisy granic\\ZLOTNO 29.txt"
 path_result = "Z:\\$$01_Winkalk\\@Winkalk 2023\\080_2023 Piłsudskiego 141\\wsad 1"
 
 

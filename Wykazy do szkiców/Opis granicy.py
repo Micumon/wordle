@@ -72,8 +72,10 @@ def desc_writer(points):
         elif direction(azimuth_calc(float(points.X[i]), float(points.Y[i]), float(points.X[i + 1]),
                                     float(points.Y[i + 1]))) == direct and same_dir_times == 0:
             same_dir_times += 1
-            if direction(azimuth_calc(float(points.X[i + 1]), float(points.Y[i + 1]), float(points.X[i + 2]),
-                                      float(points.Y[i + 2]))) == direct:
+            if i + 2 <= len(points) - 1 and direction(azimuth_calc(float(points.X[i + 1]),
+                                                                   float(points.Y[i + 1]),
+                                                                   float(points.X[i + 2]),
+                                                                   float(points.Y[i + 2]))) == direct:
                 result += f" przez punkty {points.number[i]}"
             else:
                 result += f" przez punkt {points.number[i]}"
@@ -130,5 +132,5 @@ next_point = NextPointGen()
 plot = "156/6"
 description = f"""Granica działki {plot} {next(travel_gen)} od punktu {desc_writer(points)}"""
 
-with open("C:\\Users\\admin\\Desktop\\proba\\opis.txt", "w") as file:
+with open("C:\\Users\\admin\\Desktop\\Opisy granic\\opis.txt", "w") as file:
     file.write(description)
