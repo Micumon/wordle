@@ -32,7 +32,9 @@ def nicer_combinations_generator(set_n, squares, combinations=None, counter=0, t
         tup_res = tuple(tup_res)
         counter -= 1
 
-
+""" 
+This is how NOT to do it. ;-p
+"""
 def combinations_generator(set_n, squares):
     combinations = []
     for a in set_n:
@@ -72,9 +74,9 @@ def combinations_generator(set_n, squares):
     return combinations
 
 
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-searched_sum = 6
-squares_num = 5
+numbers = ["a", "e", "o", "u", "i", "y"]
+searched_sum = 15
+squares_num = 3
 #must_contain = 4
 combinations_number = int(factorial(len(numbers)) / (factorial(squares_num) * factorial(len(numbers) - squares_num)))
 combinations = []

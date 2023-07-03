@@ -132,5 +132,5 @@ next_point = NextPointGen()
 plot = "156/6"
 description = f"""Granica działki {plot} {next(travel_gen)} od punktu {desc_writer(points)}"""
 
-with open("C:\\Users\\admin\\Desktop\\Opisy granic\\opis.txt", "w") as file:
+with open("C:\\Users\\admin\\Desktop\\Opisy granic\\Zakładowa opis.txt", "w") as file:
     file.write(description)
